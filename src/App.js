@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Routes } from "react-router-dom";
+import PublicPage from "./components/PublicPage";
+import Contact from "./components/Contact";
+import BookList from "./components/BookList";
+import BookPage from "./components/BookPage";
+import AddBookForm from "./components/AddBookForm";
+import EditBook from "./components/EditBook";
+import ErrorPage from "./components/ErrorPage";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Routes>
+        <Route path="/">
+          <Route index element={<PublicPage />}></Route>
+          <Route path="/contact" element={<Contact />}></Route>
+          <Route path="/books" element={<BookList />} />
+          <Route path="/books/add" element={<AddBookForm />} />
+          <Route path="/books/:id" element={<BookPage />} />
+          <Route path="/books/edit/:id" element={<EditBook />} />
+          <Route path="/error" element={<ErrorPage />} />
+        </Route>
+      </Routes>
+    </>
   );
-}
-
+};
 export default App;
