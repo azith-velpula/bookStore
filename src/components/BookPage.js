@@ -23,13 +23,16 @@ const BookPage = () => {
   const handleDelete = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch("http://localhost:3500/books", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id: book._id }),
-      });
+      const response = await fetch(
+        "https://book-store-api-mgoh.onrender.com/books",
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ id: book._id }),
+        }
+      );
       const message = await response.json();
       alert(message.message);
       navigate("/books");

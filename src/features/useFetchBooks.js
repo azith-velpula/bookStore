@@ -8,7 +8,7 @@ const useFetchBooks = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3500/books")
+      .get("https://book-store-api-mgoh.onrender.com/books")
       .then((response) => {
         setBooks(response.data);
         setLoading(false);

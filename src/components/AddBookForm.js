@@ -65,13 +65,16 @@ const AddBookForm = () => {
     if (validateForm()) {
       const newBook = { ...bookData, published: Number(bookData.published) };
       try {
-        const response = await fetch("http://localhost:3500/books", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(newBook),
-        });
+        const response = await fetch(
+          "https://book-store-api-mgoh.onrender.com/books",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newBook),
+          }
+        );
         const message = await response.json();
         alert(message.message);
         navigate("/books");
